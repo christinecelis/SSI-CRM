@@ -287,3 +287,10 @@ export async function getNextENumber() {
   const next = parseInt(last, 10) + 1;
   return `${prefix}${String(next).padStart(3, '0')}`;
 }
+export async function deleteProject(id) {
+  const { error } = await supabase
+    .from('projects')
+    .delete()
+    .eq('id', id);
+  if (error) throw error;
+}
