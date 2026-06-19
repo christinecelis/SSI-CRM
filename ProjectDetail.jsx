@@ -450,3 +450,19 @@ export default function ProjectDetail({ project, staff, onClose, onUpdate, onAdd
   ...
   onDelete={actions.delete}   // ← add this line
 />
+// In the function signature:
+export default function ProjectDetail({ ..., onDelete }) {
+
+// In the header JSX, next to the × close button:
+{isManager && (
+  <button
+    onClick={async () => {
+      if (!confirm(`Delete "${project.name}"? This cannot be undone.`)) return;
+      await onDelete(project.id);
+      onClose();
+    }}
+    className="text-xs px-3 py-1.5 bg-red-900/40 hover:bg-red-800 border border-red-700 text-red-400 hover:text-red-300 rounded-lg transition-colors"
+  >
+    🗑 Delete
+  </button>
+)}
