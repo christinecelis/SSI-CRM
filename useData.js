@@ -207,3 +207,8 @@ function normalizeProjects(raw) {
     };
   });
 }
+// inside useProjects(), find where actions is defined and add:
+delete: async (id) => {
+  await deleteProject(id);
+  setProjects(prev => prev.filter(p => p.id !== id));
+},
