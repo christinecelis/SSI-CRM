@@ -446,3 +446,7 @@ export default function ProjectDetail({ project, staff, onClose, onUpdate, onAdd
     🗑 Delete
   </button>
 )}
+<ProjectDetail
+  ...
+  onDelete={actions.delete}   // ← add this line
+/>
